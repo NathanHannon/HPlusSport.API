@@ -1,5 +1,6 @@
 .vscode
-obj
+obj/Debug
 Properties
 appsettings.Development.json
 bin
+
