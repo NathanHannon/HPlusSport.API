@@ -14,15 +14,24 @@ namespace HPlusSport.API.Controllers
     {
         private readonly ShopContext _context;
 
-        public ProductsController(ShopContext context) {
+        public ProductsController(ShopContext context)
+        {
             _context = context;
 
             _context.Database.EnsureCreated();
         }
 
         [HttpGet]
-        public IEnumerable<Product> GetAllProducts() {
-            return _context.Products.ToArray();
+        public IActionResult GetAllProducts()
+        {
+            return Ok(_context.Products.ToArray());
+        }
+
+        [HttpGet("{id}")]
+        public IActionResult GetProduct(int id)
+        {
+            var product = _context.Products.Find(id);
+            return Ok(product);
         }
     }
 }
